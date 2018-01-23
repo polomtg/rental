@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace rental.Properties
+namespace Sklep.Properties
 {
 
 

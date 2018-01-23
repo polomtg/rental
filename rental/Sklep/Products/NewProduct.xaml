@@ -1,0 +1,83 @@
+﻿<Window x:Class="Sklep.Products.NewProduct"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sklep.Products"
+        xmlns:users="clr-namespace:Sklep.Users"
+        mc:Ignorable="d"
+        Title="NewProduct" Height="300" Width="300">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="dataFromEnum" MethodName="GetValue" ObjectType="{x:Type users:EnumManager}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:Category"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+
+    <Border Padding="10">
+        <StackPanel>
+
+            <!--TYTUŁ-->
+            <Grid>
+                <TextBlock Text="Dodaj nowey produkt" Margin="0 0 0 10" />
+            </Grid>
+
+            <!--IMIE-->
+            <Grid Margin="0 0 0 10">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Nazwa" Margin="0 0 0 10" Grid.Column="0" />
+                <TextBox x:Name="NameTxt" Grid.Column="1"></TextBox>
+            </Grid>
+
+            <!--ROLA-->
+            <Grid Margin="0 0 0 10">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Kategoria" Grid.Column="0"/>
+                <ComboBox Grid.Column="1" x:Name="CategoryTxt" ItemsSource="{Binding Source={StaticResource dataFromEnum}}" SelectedItem="{Binding Category}" />
+            </Grid>
+
+            <!--EMAIL-->
+            <Grid Margin="0 0 0 10">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Cena"  Grid.Column="0"/>
+                <TextBox x:Name="PriceTxt" Grid.Column="1"></TextBox>
+            </Grid>
+
+            <!--EMAIL-->
+            <Grid Margin="0 0 0 10">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Ilość"  Grid.Column="0"/>
+                <TextBox x:Name="AmountTxt" Grid.Column="1"></TextBox>
+            </Grid>
+
+            <!--Przyciski-->
+            <Grid Margin="0 0 0 10">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="DodajBtn" Click="DodajBtn_Click"  Content="Dodaj" Grid.Column="0"/>
+                <Button x:Name="AnalujBtn" Click="AnalujBtn_Click"  Content="Anuluj" Grid.Column="1"/>
+            </Grid>
+
+        </StackPanel>
+    </Border>
+</Window>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace rental
+namespace Sklep
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,6 +24,13 @@ namespace rental
         public MainWindow()
         {
             InitializeComponent();
+            InitBinding();                   
+        }
+
+        private void InitBinding()
+        {
+            ListViewUsers.ItemsSource = Users.UserViewModel.users;
+            ListViewProducts.ItemsSource = Products.ProductViewModel.products;
         }
     }
 }
