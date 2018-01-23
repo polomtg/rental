@@ -1,0 +1,63 @@
+﻿<Window x:Class="Sklep.Cutomers.NewCustomer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sklep.Cutomers"
+        mc:Ignorable="d"
+        Title="NewCustomer" Height="300" Width="300">
+    <Border Padding="10">
+        <StackPanel>
+
+            <!--TYTUŁ-->
+            <Grid>
+                <TextBlock Text="Dodaj nowego klienta" Margin="0 0 0 10" />
+            </Grid>
+
+            <!--IMIE-->
+            <Grid Margin="0 0 0 10">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Imie" Margin="0 0 0 10" Grid.Column="0" />
+                <TextBox x:Name="NameTxt" Grid.Column="1"></TextBox>
+            </Grid>
+
+            <!--NIP-->
+            <Grid Margin="0 0 0 10">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="NIP"  Grid.Column="0"/>
+                <TextBox x:Name="NIPTxt" Grid.Column="1"></TextBox>
+            </Grid>
+
+            <!--ADRES-->
+            <Grid Margin="0 0 0 10">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Adres"  Grid.Column="0"/>
+                <TextBox x:Name="AdressTxt" Grid.Column="1"></TextBox>
+            </Grid>
+
+            <!--Przyciski-->
+            <Grid Margin="0 0 0 10">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="DodajBtn" Click="DodajBtn_Click"  Content="Dodaj" Grid.Column="0"/>
+                <Button x:Name="AnalujBtn" Click="AnalujBtn_Click"  Content="Anuluj" Grid.Column="1"/>
+            </Grid>
+
+        </StackPanel>
+    </Border>
+</Window>

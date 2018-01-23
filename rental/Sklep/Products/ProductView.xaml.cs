@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,16 +13,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Sklep
+namespace Sklep.Products
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ProductView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ProductView : UserControl
     {
-        public MainWindow()
+        ProductViewModel viewModel = new ProductViewModel();
+
+        public ProductView()
         {
-            InitializeComponent();                
+            InitializeComponent();
+            InitBinding();
+        }
+
+        public void InitBinding()
+        {
+            ListViewProducts.ItemsSource = ProductViewModel.products;
+            viewModel.LoadProducts();
         }
     }
 }

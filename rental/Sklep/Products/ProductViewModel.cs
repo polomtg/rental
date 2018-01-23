@@ -14,7 +14,6 @@ namespace Sklep.Products
 
         public ProductViewModel()
         {
-            LoadProducts();
         }
 
         public void LoadProducts()

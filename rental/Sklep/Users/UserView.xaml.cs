@@ -20,15 +20,18 @@ namespace Sklep.Users
     /// </summary>
     public partial class UserView : UserControl
     {
+        public UserViewModel viewModel = new UserViewModel();
+
         public UserView()
         {
             InitializeComponent();
-
+            InitBinding();
         }
 
-        private void EdytujBtn_Click(object sender, RoutedEventArgs e)
+        public void InitBinding()
         {
-
+            ListOfUsers.ItemsSource = UserViewModel.users;
+            viewModel.LoadUsers();
         }
     }
 }

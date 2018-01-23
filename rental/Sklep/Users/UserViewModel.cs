@@ -15,7 +15,7 @@ namespace Sklep.Users
 
         public UserViewModel()
         {
-            LoadUsers();
+ 
         }
       
         public void LoadUsers()

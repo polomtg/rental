@@ -58,11 +58,22 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Cutomers\Customer.cs" />
+    <Compile Include="Cutomers\CustomerView.xaml.cs">
+      <DependentUpon>CustomerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cutomers\CustomerViewModel.cs" />
+    <Compile Include="Cutomers\NewCustomer.xaml.cs">
+      <DependentUpon>NewCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Cutomers\Updater.cs" />
     <Compile Include="Products\Category.cs" />
     <Compile Include="Products\NewProduct.xaml.cs">
       <DependentUpon>NewProduct.xaml</DependentUpon>
     </Compile>
     <Compile Include="Products\Product.cs" />
+    <Compile Include="Products\ProductView.xaml.cs">
+      <DependentUpon>ProductView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Products\ProductViewModel.cs" />
     <Compile Include="Products\Updater.cs" />
     <Compile Include="Users\EnumManager.cs" />
@@ -76,6 +87,14 @@
       <DependentUpon>UserView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Users\UserViewModel.cs" />
+    <Page Include="Cutomers\CustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Cutomers\NewCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -89,6 +108,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Products\NewProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Products\ProductView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

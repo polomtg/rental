@@ -6,40 +6,50 @@
              xmlns:local="clr-namespace:Sklep.Users"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-   
-     
-                <Grid>
-                    <!-- KOLUMNY-->
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
 
-                    <!--LISTA-->
-                    <ListView x:Name="ListOfUsers" Grid.Column="0">
-                        <ListView.View>
-                            <GridView AllowsColumnReorder="True">
-                                <GridViewColumn Header="Lp" 
-                                            DisplayMemberBinding="{Binding ID}"/>
-                                <GridViewColumn Header="Imie i Nazwisko"
-                                            DisplayMemberBinding="{Binding name}"/>
-                                <GridViewColumn Header="Email"
-                                            DisplayMemberBinding="{Binding email}"/>
-                                <GridViewColumn Header="Rola"
-                                            DisplayMemberBinding="{Binding rolaS}"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
+    <UserControl.Resources>
+        <local:UserViewModel x:Key="userView"/>
+    </UserControl.Resources>
+              
+    <Grid>
+                    
+        <!-- KOLUMNY-->            
+        <Grid.ColumnDefinitions>
 
-                    <!--PRZYCISKI-->
-                    <StackPanel Grid.Column="1" Margin="10 0 0 0">
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+                   
+        </Grid.ColumnDefinitions>
+         
+        <!--LISTA-->
+        <ListView x:Name="ListOfUsers" Grid.Column="0">
 
-                        <Button x:Name="ButtonDodaj" Content="AddToList" Margin="0 0 0 15" 
-                                            Command="{Binding Path=UpdateCommand}" />
-                        <Button x:Name="EdytujBtn"  Content="Edytuj"  Margin="0 0 0 15"/>
-                        <Button Content="Usuń"  Margin="0 0 0 15"/>
+            <ListView.View>
 
-                    </StackPanel>
+                <GridView AllowsColumnReorder="True">
+                    <GridViewColumn Header="Lp" 
+                                    DisplayMemberBinding="{Binding ID}"/>
+                    <GridViewColumn Header="Imie i Nazwisko"            
+                                    DisplayMemberBinding="{Binding name}"/>
+                    <GridViewColumn Header="Email"     
+                                    DisplayMemberBinding="{Binding email}"/>
+                    <GridViewColumn Header="Rola" 
+                                    DisplayMemberBinding="{Binding rolaS}"/>
+                </GridView>
+
+            </ListView.View>
+        </ListView>
+
+        <!--PRZYCISKI-->              
+        <StackPanel Grid.Column="1" Margin="10 0 0 0">
+
+            <Button x:Name="ButtonDodaj" Content="AddToList" Margin="0 0 0 15"     
+                    Command="{Binding UpdateCommand, Source={StaticResource userView}}" />
+            <Button x:Name="EdytujBtn"  Content="Edytuj"  Margin="0 0 0 15"/>
+            <Button Content="Usuń"  Margin="0 0 0 15"/>
+            
+        </StackPanel>
+        
     </Grid>
 
     

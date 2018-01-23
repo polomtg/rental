@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,16 +13,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Sklep
+namespace Sklep.Cutomers
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for CustomerView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class CustomerView : UserControl
     {
-        public MainWindow()
+        CustomerViewModel viewModel = new CustomerViewModel();
+
+        public CustomerView()
         {
-            InitializeComponent();                
+            InitializeComponent();
+            InitBinding();
+        }
+
+        private void InitBinding()
+        {
+            ListViewCustomers.ItemsSource = CustomerViewModel.products;
+            viewModel.LoadCustomer();
         }
     }
 }

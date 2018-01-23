@@ -1,17 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Sklep.Cutomers
 {
-    public class Customer
+    public class Customer : INotifyPropertyChanged
     {
-
         private string _name;
         private long _NIP;
         private string _adress;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public Customer(string nameT, long NIPT, string adressT)
+        {
+            _name = nameT;
+            _NIP = NIPT;
+            _adress = adressT;
+        }
+
+        private void RisePropertyChanged(string property)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
+        }
 
         /// <summary>
         /// Gettery i Settery
@@ -20,19 +35,31 @@ namespace Sklep.Cutomers
         public string name
         {
             get { return _name; }
-            set { _name = value; }
+            set
+            {
+                _name = value;
+                RisePropertyChanged("name");
+            }
         }
 
         public long NIP
         {
             get { return _NIP; }
-            set { _NIP = value; }
+            set
+            {
+                _NIP = value;
+                RisePropertyChanged("NIP");
+            }
         }
 
         public string adress
         {
             get { return _adress; }
-            set { _adress = value; }
+            set
+            {
+                _adress = value;
+                RisePropertyChanged("adress");
+            }
         }
         #endregion
 
