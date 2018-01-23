@@ -16,7 +16,7 @@ namespace Sklep.Cutomers
         {
             products.Add(new Customer("Andrzej Kowalski", 321312323, "Wólka Dolna"));
             products.Add(new Customer("Jan Sobieski", 23123232, "Siedmiogród"));
-            products.Add(new Customer("PJ", 23123213, "Angel Beats"));
+            products.Add(new Customer("PJ", 23123213, "W1"));
         }
 
         public static void addProduct()
