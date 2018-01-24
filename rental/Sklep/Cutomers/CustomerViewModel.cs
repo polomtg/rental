@@ -19,7 +19,9 @@ namespace Sklep.Cutomers
             customers.Add(new Customer("PJ", 23123213, "W1"));
         }
 
-        public static void addCustomer() //static
+        #region Data Managment
+
+        public static void addr() 
         {
             var dodaj = new NewCustomer();
 
@@ -27,10 +29,14 @@ namespace Sklep.Cutomers
                 customers.Add(new Customer(dodaj.name, dodaj.NIP, dodaj.adress));
         }
         
-        public static void removeCustomer(Customer customer)
+        public static void remove(Customer customer)
         {
             customers.Remove(customer);
         }
+
+        #endregion
+
+        #region Commands
 
         private ICommand mUpdater;
 
@@ -48,6 +54,8 @@ namespace Sklep.Cutomers
                 mUpdater = value;
             }
         }
+
+        #endregion
 
     }
 }

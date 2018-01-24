@@ -25,6 +25,25 @@ namespace Sklep.Users
             users.Add(new User("Neo", "matrix@rm.pl", Users.Role.USER));
         }
 
+        #region Data Management
+
+        public static void add()
+        {
+            var dodaj = new NewUser();
+
+            if (dodaj.ShowDialog() == true)
+                users.Add(new User(dodaj.name, dodaj.email, dodaj.rola));
+        }
+
+        public static void remove(User user)
+        {
+            users.Remove(user);
+        }
+
+        #endregion
+
+        #region
+
         private ICommand mUpdater;
 
         public ICommand UpdateCommand
@@ -42,18 +61,6 @@ namespace Sklep.Users
             }
         }
 
-        public static void add()
-        {
-            var dodaj = new NewUser();
-
-            if (dodaj.ShowDialog() == true)
-                users.Add(new User(dodaj.name, dodaj.email, dodaj.rola));
-        }
-
-        public static void remove(User user)
-        {
-            users.Remove(user);
-        }
-       
+        #endregion
     }
 }

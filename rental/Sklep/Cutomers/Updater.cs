@@ -29,9 +29,9 @@ namespace Sklep.Cutomers
         public void Execute(object parameter)
         {
             if (parameter == null)
-                CustomerViewModel.addCustomer();
+                CustomerViewModel.addr();
             else
-                CustomerViewModel.removeCustomer(parameter as Customer);
+                CustomerViewModel.remove(parameter as Customer);
         }
     }
 }

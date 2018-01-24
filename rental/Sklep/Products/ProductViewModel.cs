@@ -23,7 +23,9 @@ namespace Sklep.Products
             products.Add(new Product("Koparka", Category.SHELF, 44.90f, 5, 5));
         }
 
-        public static void addProduct()
+        #region Data Management
+
+        public static void add()
         {
             var dodaj = new NewProduct();
 
@@ -31,10 +33,14 @@ namespace Sklep.Products
                 products.Add(new Product(dodaj.name, dodaj.category, dodaj.price, dodaj.amount, dodaj.amount));
         }
 
-        public static void removeProduct(Product product)
+        public static void remove(Product product)
         {
             products.Remove(product);
         }
+
+        #endregion
+
+        #region Commands
 
         private ICommand mUpdater;
 
@@ -52,5 +58,6 @@ namespace Sklep.Products
                 mUpdater = value;
             }
         }
+        #endregion
     }
 }
