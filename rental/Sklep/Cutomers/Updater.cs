@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,6 @@ namespace Sklep.Cutomers
 {
     public class Updater : ICommand
     {
-
         public Updater()
         {
 
@@ -28,7 +28,10 @@ namespace Sklep.Cutomers
 
         public void Execute(object parameter)
         {
-            CustomerViewModel.addProduct();
+            if (parameter == null)
+                CustomerViewModel.addCustomer();
+            else
+                CustomerViewModel.removeCustomer(parameter as Customer);
         }
     }
 }

@@ -28,7 +28,10 @@ namespace Sklep.Products
 
         public void Execute(object parameter)
         {
-            ProductViewModel.addProduct();
+            if (parameter == null)
+                ProductViewModel.addProduct();
+            else
+                ProductViewModel.removeProduct(parameter as Product);
         }
     }
 }

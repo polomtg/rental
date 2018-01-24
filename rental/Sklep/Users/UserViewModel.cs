@@ -49,6 +49,11 @@ namespace Sklep.Users
             if (dodaj.ShowDialog() == true)
                 users.Add(new User(dodaj.name, dodaj.email, dodaj.rola));
         }
+
+        public static void remove(User user)
+        {
+            users.Remove(user);
+        }
        
     }
 }

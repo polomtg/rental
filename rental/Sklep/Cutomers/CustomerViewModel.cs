@@ -10,21 +10,26 @@ namespace Sklep.Cutomers
 {
     public class CustomerViewModel
     {
-        public static ObservableCollection<Customer> products = new ObservableCollection<Customer>();
+        public static ObservableCollection<Customer> customers = new ObservableCollection<Customer>();
 
         public void LoadCustomer()
         {
-            products.Add(new Customer("Andrzej Kowalski", 321312323, "Wólka Dolna"));
-            products.Add(new Customer("Jan Sobieski", 23123232, "Siedmiogród"));
-            products.Add(new Customer("PJ", 23123213, "Angel Beats"));
+            customers.Add(new Customer("Andrzej Kowalski", 321312323, "Wólka Dolna"));
+            customers.Add(new Customer("Jan Sobieski", 23123232, "Siedmiogród"));
+            customers.Add(new Customer("PJ", 23123213, "W1"));
         }
 
-        public static void addProduct()
+        public static void addCustomer() //static
         {
             var dodaj = new NewCustomer();
 
             if (dodaj.ShowDialog() == true)
-                products.Add(new Customer(dodaj.name, dodaj.NIP, dodaj.adress));
+                customers.Add(new Customer(dodaj.name, dodaj.NIP, dodaj.adress));
+        }
+        
+        public static void removeCustomer(Customer customer)
+        {
+            customers.Remove(customer);
         }
 
         private ICommand mUpdater;
@@ -34,7 +39,7 @@ namespace Sklep.Cutomers
             get
             {
                 if (mUpdater == null)
-                    mUpdater = new Updater();
+                    mUpdater = new Updater(); //ref products
 
                 return mUpdater;
             }

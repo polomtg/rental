@@ -18,9 +18,9 @@ namespace Sklep.Products
 
         public void LoadProducts()
         {
-            products.Add(new Product("Koparka", Category.SHELF, 44.90f, 5));
-            products.Add(new Product("Koparka", Category.SHELF, 44.90f, 5));
-            products.Add(new Product("Koparka", Category.SHELF, 44.90f, 5));
+            products.Add(new Product("Koparka", Category.SHELF, 44.90f, 5, 5));
+            products.Add(new Product("Koparka", Category.SHELF, 44.90f, 5, 5));
+            products.Add(new Product("Koparka", Category.SHELF, 44.90f, 5, 5));
         }
 
         public static void addProduct()
@@ -28,7 +28,12 @@ namespace Sklep.Products
             var dodaj = new NewProduct();
 
             if (dodaj.ShowDialog() == true)
-                products.Add(new Product(dodaj.name, dodaj.category, dodaj.price, dodaj.amount));
+                products.Add(new Product(dodaj.name, dodaj.category, dodaj.price, dodaj.amount, dodaj.amount));
+        }
+
+        public static void removeProduct(Product product)
+        {
+            products.Remove(product);
         }
 
         private ICommand mUpdater;

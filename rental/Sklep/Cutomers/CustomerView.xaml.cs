@@ -30,7 +30,7 @@ namespace Sklep.Cutomers
 
         private void InitBinding()
         {
-            ListViewCustomers.ItemsSource = CustomerViewModel.products;
+            ListViewCustomers.ItemsSource = CustomerViewModel.customers;
             viewModel.LoadCustomer();
         }
     }

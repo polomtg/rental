@@ -16,14 +16,16 @@ namespace Sklep.Products
         private Category _category;
         private float _price;
         private int _amount;
+        private int _available;
 
-        public Product(string nameT, Category categoryT, float priceT, int amountT)
+        public Product(string nameT, Category categoryT, float priceT, int amountT, int availableT)
         {
             _ID = GETID + 10;
             _name = nameT;
             _category = categoryT;
             _price = priceT;
             _amount = amountT;
+            _available = availableT;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -89,6 +91,17 @@ namespace Sklep.Products
                 RisePropertyChanged("amount");
             }
         }
+
+        public int available
+        {
+            get { return _available; }
+            set
+            {
+                _available = value;
+                RisePropertyChanged("available");
+            }
+        }
+
         #endregion
     }
 }

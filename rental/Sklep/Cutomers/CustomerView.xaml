@@ -22,14 +22,12 @@
             </Grid.ColumnDefinitions>
 
             <!--LISTA-->
-            <ListView x:Name="ListViewCustomers" Grid.Column="0" >
+            <ListView x:Name="ListViewCustomers" Grid.Column="0" SelectionMode="Single">
                 <ListView.View>
                     <GridView AllowsColumnReorder="True">
-                        <GridViewColumn Header="Lp" 
-                                            DisplayMemberBinding="{Binding ID}"/>
-                        <GridViewColumn Header="ID"
+                        <GridViewColumn Header="Imie"
                                             DisplayMemberBinding="{Binding name}"/>
-                        <GridViewColumn Header="Imie i nazwisko"
+                        <GridViewColumn Header="NIP"
                                             DisplayMemberBinding="{Binding NIP}"/>
                         <GridViewColumn Header="Adres"
                                             DisplayMemberBinding="{Binding adress}"/>
@@ -40,9 +38,12 @@
             <!--PRZYCISKI-->
             <StackPanel Grid.Column="1" Margin="10 0 0 0">
 
-                <Button Content="Dodaj" x:Name="DodajKlientaBtn" Margin="0 0 0 15" Command="{Binding UpdateCommandProduct, Source={StaticResource ViewModel}}" />
+                <Button Content="Dodaj" x:Name="DodajKlientaBtn" Margin="0 0 0 15" 
+                        Command="{Binding UpdateCommandProduct, Source={StaticResource ViewModel}}" />
                 <Button x:Name="EdytujKlientaBtn" Content="Edytuj"  Margin="0 0 0 15"/>
-                <Button Content="Usuń"  Margin="0 0 0 15"/>
+                <Button Content="Usuń"  Margin="0 0 0 15" 
+                        Command="{Binding UpdateCommandProduct, Source={StaticResource ViewModel}}" 
+                        CommandParameter="{Binding ElementName=ListViewCustomers, Path=SelectedItem}"/>
 
             </StackPanel>
 

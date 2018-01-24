@@ -28,7 +28,10 @@ namespace Sklep.Users
 
         public void Execute(object parameter)
         {
-            UserViewModel.add();
+            if (parameter == null)
+                UserViewModel.add();
+            else
+                UserViewModel.remove(parameter as User);
         }
     }
 }

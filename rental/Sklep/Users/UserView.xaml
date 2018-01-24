@@ -22,7 +22,7 @@
         </Grid.ColumnDefinitions>
          
         <!--LISTA-->
-        <ListView x:Name="ListOfUsers" Grid.Column="0">
+        <ListView x:Name="ListOfUsers" Grid.Column="0" SelectionMode="Single">
 
             <ListView.View>
 
@@ -46,7 +46,9 @@
             <Button x:Name="ButtonDodaj" Content="AddToList" Margin="0 0 0 15"     
                     Command="{Binding UpdateCommand, Source={StaticResource userView}}" />
             <Button x:Name="EdytujBtn"  Content="Edytuj"  Margin="0 0 0 15"/>
-            <Button Content="Usuń"  Margin="0 0 0 15"/>
+            <Button Content="Usuń"  Margin="0 0 0 15" 
+                    Command="{Binding UpdateCommand, Source={StaticResource userView}}"
+                    CommandParameter="{Binding ElementName=ListOfUsers, Path=SelectedItem}"/>
             
         </StackPanel>
         
