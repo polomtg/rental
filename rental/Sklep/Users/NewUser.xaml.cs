@@ -47,7 +47,7 @@ namespace Sklep.Users
         {
             _name = ImieTxt.Text;
             _email = EmailTxt.Text;
-            _rola = Role.USER;
+            _rola = (Role)RolaTxt.SelectedValue;
 
             DialogResult = true;
         }

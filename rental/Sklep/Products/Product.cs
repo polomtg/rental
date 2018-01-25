@@ -21,11 +21,22 @@ namespace Sklep.Products
         public Product(string nameT, Category categoryT, float priceT, int amountT, int availableT)
         {
             _ID = GETID + 10;
+            GETID += 10;
             _name = nameT;
             _category = categoryT;
             _price = priceT;
             _amount = amountT;
             _available = availableT;
+        }
+
+        public Product(Product productT)
+        {
+            _ID = productT.ID;
+            _name = productT.name;
+            _category = productT.categoryE;
+            _price = productT.price;
+            _amount = productT.amount;
+            _available = productT.available;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -36,11 +47,7 @@ namespace Sklep.Products
                 PropertyChanged(this, new PropertyChangedEventArgs(property));
         }
 
-
-        /// <summary>
-        /// Gettery i Settery
-        /// </summary>
-        #region
+        #region Gettery i Settery
 
         public int ID
         {
@@ -65,6 +72,10 @@ namespace Sklep.Products
 
         public Category categoryE
         {
+            get
+            {
+                return _category;
+            }
             set
             {
                 _category = value;

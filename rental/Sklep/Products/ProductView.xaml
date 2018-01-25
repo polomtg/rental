@@ -10,8 +10,10 @@
     <UserControl.Resources>
         <local:ProductViewModel x:Key="ViewModel"/>
     </UserControl.Resources>
+
+    <Border Padding="10">
     
-    <StackPanel>
+    <StackPanel >
 
         <Grid>
 
@@ -21,10 +23,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0">
+            <StackPanel  Grid.Column="0">
                 
                 <!--LISTA-->
-                <ListView x:Name="ListViewProducts" SelectionMode="Single">
+                <ListView x:Name="ListViewProducts" SelectionMode="Single" Height="Auto" MinHeight="200">
                     <ListView.View>
                         <GridView AllowsColumnReorder="True">
                             <GridViewColumn Header="ID" 
@@ -32,7 +34,7 @@
                             <GridViewColumn Header="Nazwa"
                                             DisplayMemberBinding="{Binding name}"/>
                             <GridViewColumn Header="Kategoria"
-                                            DisplayMemberBinding="{Binding category}"/>
+                                            DisplayMemberBinding="{Binding categoryS}"/>
                             <GridViewColumn Header="Cena"
                                             DisplayMemberBinding="{Binding price}"/>
                             <GridViewColumn Header="Dostępne"
@@ -56,7 +58,7 @@
                         Command="{Binding UpdateCommandProduct, Source={StaticResource ViewModel}}"/>
                     <Button x:Name="EdytujProduktBtn" Content="Edytuj"  Margin="10" Grid.Column="1"/>
                     <Button Content="Usuń"  Margin="10"  Grid.Column="2"
-                        Command="{Binding UpdateCommandProduct, Source={StaticResource ViewModel}}" 
+                        Command="{Binding removeCommand, Source={StaticResource ViewModel}}" 
                         CommandParameter="{Binding ElementName=ListViewProducts, Path=SelectedItem}"/>
 
                 </Grid>
@@ -65,13 +67,14 @@
             
             <!--PRZYCISKI-->
             <StackPanel Grid.Column="1">
-                <Button Content="Wypożycz" Margin="10" />
+                <Button Content="Wypożycz" Margin="10" 
+                        Command="{Binding startTransaction, Mode=OneWay, Source={StaticResource ViewModel}}" 
+                        CommandParameter="{Binding ElementName=ListViewProducts, Path=SelectedItem}"/>
                 <Button Content="Zwróć" Margin="10"/>
             </StackPanel>  
 
         </Grid>
 
-       
-
     </StackPanel>
+    </Border>
 </UserControl>

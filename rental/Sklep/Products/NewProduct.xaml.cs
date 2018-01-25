@@ -52,7 +52,7 @@ namespace Sklep.Products
         private void DodajBtn_Click(object sender, RoutedEventArgs e)
         {
             _name = NameTxt.Text;
-            _category = Category.SHELF;
+            _category =(Category) CategoryTxt.SelectedValue;
             _price = float.Parse(PriceTxt.Text);
             _amount = Int32.Parse(AmountTxt.Text);
             

@@ -7,8 +7,9 @@
         xmlns:user="clr-namespace:Sklep.Users"
         xmlns:customer="clr-namespace:Sklep.Cutomers"
         xmlns:product="clr-namespace:Sklep.Products"
+        xmlns:transaction="clr-namespace:Sklep.Transaction"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="650">
+        Title="Wypożyczalnia" Height="400" Width="650">
 
     <Border Padding="15">
 
@@ -30,6 +31,11 @@
                     <product:ProductView x:Name="ProductView"/>
                 </TabItem>
 
+                <!--TRANSAKCJE-->
+                <TabItem Header="Transakcje">
+                    <transaction:TransactionView x:Name="TransactionView"/>
+                </TabItem>
+                
             </TabControl>
         </Grid>
 

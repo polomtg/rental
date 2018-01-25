@@ -9,10 +9,17 @@ namespace Sklep.Products
 {
     public class Updater : ICommand
     {
+        private Action commandTask;
+        private Action<Product> taskParameter;
 
-        public Updater()
+        public Updater(Action workToDo)
         {
+            commandTask = workToDo;
+        }
 
+        public Updater(Action<Product> workToDo)
+        {
+            taskParameter = workToDo;
         }
 
         public bool CanExecute(object parameter)
@@ -29,9 +36,9 @@ namespace Sklep.Products
         public void Execute(object parameter)
         {
             if (parameter == null)
-                ProductViewModel.add();
+                commandTask();
             else
-                ProductViewModel.remove(parameter as Product);
+                taskParameter(parameter as Product);
         }
     }
 }

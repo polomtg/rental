@@ -66,7 +66,6 @@
       <DependentUpon>NewCustomer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Cutomers\Updater.cs" />
-    <Compile Include="Data\DatabaseLayer.cs" />
     <Compile Include="Products\Category.cs" />
     <Compile Include="Products\NewProduct.xaml.cs">
       <DependentUpon>NewProduct.xaml</DependentUpon>
@@ -76,7 +75,16 @@
       <DependentUpon>ProductView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Products\ProductViewModel.cs" />
+    <Compile Include="Transaction\Transaction.cs" />
+    <Compile Include="Products\NewTransaction.xaml.cs">
+      <DependentUpon>NewTransaction.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Products\Updater.cs" />
+    <Compile Include="Transaction\TransactionView.xaml.cs">
+      <DependentUpon>TransactionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction\TransactionViewModel.cs" />
+    <Compile Include="Transaction\Updater.cs" />
     <Compile Include="Users\EnumManager.cs" />
     <Compile Include="Users\NewUser.xaml.cs">
       <DependentUpon>NewUser.xaml</DependentUpon>
@@ -113,6 +121,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Products\ProductView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Products\NewTransaction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Transaction\TransactionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -13,25 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Sklep.Cutomers
+namespace Sklep.Transaction
 {
     /// <summary>
-    /// Interaction logic for CustomerView.xaml
+    /// Interaction logic for TransactionView.xaml
     /// </summary>
-    public partial class CustomerView : UserControl
+    public partial class TransactionView : UserControl
     {
-        CustomerViewModel viewModel = new CustomerViewModel();
-
-        public CustomerView()
+        public TransactionView()
         {
             InitializeComponent();
-            InitBinding();
-        }
-
-        private void InitBinding()
-        {
-            ListViewCustomers.ItemsSource = CustomerViewModel.customers; //static
-            viewModel.LoadCustomer();
+            ListViewTransaction.ItemsSource = TransactionViewModel.transactions;
         }
     }
 }

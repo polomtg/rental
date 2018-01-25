@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Sklep.Cutomers
+namespace Sklep.Transaction
 {
     public class Updater : ICommand
     {
         private Action commandTask;
-        private Action<Customer> taskParameter;
+        private Action<Transaction> taskParameter;
 
         public Updater(Action workToDo)
         {
             commandTask = workToDo;
         }
 
-        public Updater(Action<Customer> workToDo)
+        public Updater(Action<Transaction> workToDo)
         {
             taskParameter = workToDo;
         }
@@ -34,20 +33,12 @@ namespace Sklep.Cutomers
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-      /*  public void Execute(object parameter)
-        {
-            if (parameter == null)
-                CustomerViewModel.add();
-            else
-                CustomerViewModel.remove(parameter as Customer);
-        }*/
-
         public void Execute(object parameter)
         {
             if (parameter == null)
                 commandTask();
             else
-                taskParameter(parameter as Customer);
+                taskParameter(parameter as Transaction);
         }
     }
 }

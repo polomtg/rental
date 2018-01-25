@@ -9,10 +9,17 @@ namespace Sklep.Users
 {
     public class Updater : ICommand
     {
+        private Action commandTask;
+        private Action<User> taskParameter;
 
-        public Updater()
+        public Updater(Action workToDo)
         {
-            
+            commandTask = workToDo;
+        }
+
+        public Updater(Action<User> workToDo)
+        {
+            taskParameter = workToDo;
         }
 
         public bool CanExecute(object parameter)
@@ -29,9 +36,9 @@ namespace Sklep.Users
         public void Execute(object parameter)
         {
             if (parameter == null)
-                UserViewModel.add();
+                commandTask();
             else
-                UserViewModel.remove(parameter as User);
+                taskParameter(parameter as User);
         }
     }
 }

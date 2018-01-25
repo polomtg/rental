@@ -10,7 +10,7 @@ namespace Sklep.Cutomers
 {
     public class CustomerViewModel
     {
-        public static ObservableCollection<Customer> customers = new ObservableCollection<Customer>();
+        public static ObservableCollection<Customer> customers = new ObservableCollection<Customer>(); 
 
         public void LoadCustomer()
         {
@@ -21,7 +21,7 @@ namespace Sklep.Cutomers
 
         #region Data Managment
 
-        public static void addr() 
+        public static void add() //static
         {
             var dodaj = new NewCustomer();
 
@@ -29,7 +29,7 @@ namespace Sklep.Cutomers
                 customers.Add(new Customer(dodaj.name, dodaj.NIP, dodaj.adress));
         }
         
-        public static void remove(Customer customer)
+        public static void remove(Customer customer)//static
         {
             customers.Remove(customer);
         }
@@ -38,20 +38,20 @@ namespace Sklep.Cutomers
 
         #region Commands
 
-        private ICommand mUpdater;
+        //private ICommand mUpdater;
 
-        public ICommand UpdateCommandProduct
+        public ICommand addCommand
         {
             get
             {
-                if (mUpdater == null)
-                    mUpdater = new Updater(); //ref products
-
-                return mUpdater;
+                return new Updater(add);
             }
-            set
+        }
+        public ICommand removeCommand
+        {
+            get
             {
-                mUpdater = value;
+                return new Updater(remove);
             }
         }
 

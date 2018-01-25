@@ -28,6 +28,11 @@ namespace Sklep.Cutomers
                 PropertyChanged(this, new PropertyChangedEventArgs(property));
         }
 
+        public override string ToString()
+        {
+            return name;
+        }
+
         /// <summary>
         /// Gettery i Settery
         /// </summary>

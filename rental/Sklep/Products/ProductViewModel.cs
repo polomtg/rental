@@ -38,26 +38,48 @@ namespace Sklep.Products
             products.Remove(product);
         }
 
+        public static void newTransaction(Product tmp)
+        {
+            var transakcja = new NewTransaction();
+
+            if (transakcja.ShowDialog() == true)
+                Transaction.TransactionViewModel.add(transakcja.customer, tmp.ID, tmp.name, transakcja.date, transakcja.amount);
+
+            for(int i = 0; i < products.Count; i++)
+            {
+                if (products[i].ID == tmp.ID)
+                    products[i].amount -= transakcja.amount;
+            }
+        }
+
         #endregion
 
         #region Commands
-
-        private ICommand mUpdater;
 
         public ICommand UpdateCommandProduct
         {
             get
             {
-                if (mUpdater == null)
-                    mUpdater = new Products.Updater();
-
-                return mUpdater;
-            }
-            set
-            {
-                mUpdater = value;
+                return new Updater(add);
             }
         }
+
+        public ICommand removeCommand
+        {
+            get
+            {
+                return new Updater(remove);
+            }
+        }
+        
+        public ICommand startTransaction
+        {
+            get
+            {
+                return new Updater(newTransaction);
+            }
+        }
+
         #endregion
     }
 }

@@ -15,7 +15,6 @@ namespace Sklep.Users
 
         public UserViewModel()
         {
- 
         }
       
         public void LoadUsers()
@@ -42,22 +41,21 @@ namespace Sklep.Users
 
         #endregion
 
-        #region
-
-        private ICommand mUpdater;
+        #region Command
 
         public ICommand UpdateCommand
         {
             get
             {
-                if (mUpdater == null)
-                    mUpdater = new Updater();
-
-                return mUpdater;
+                return new Updater(add);
             }
-            set
+        }
+
+        public ICommand removeCommand
+        {
+            get
             {
-                mUpdater = value;
+                return new Updater(remove);
             }
         }
 

@@ -53,7 +53,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Text="Rola" Grid.Column="0"/>
-                <ComboBox Grid.Column="1" ItemsSource="{Binding Source={StaticResource dataFromEnum}}" SelectedItem="{Binding Rola}" />
+                <ComboBox x:Name="RolaTxt" Grid.Column="1" ItemsSource="{Binding Source={StaticResource dataFromEnum}}" SelectedItem="{Binding Rola}" />
             </Grid>
 
             <!--Przyciski-->
