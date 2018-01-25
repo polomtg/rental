@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Sklep.Transaction"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    
     <UserControl.Resources>
         <local:TransactionViewModel x:Key="ViewModel"/>
     </UserControl.Resources>
@@ -42,7 +43,9 @@
 
                 <!--PRZYCISKI-->
                 <StackPanel Grid.Column="1">
-                    <Button Content="Zwróć" Margin="10" />
+                    <Button Content="Zwróć" Margin="10" 
+                            Command="{Binding getBack, Mode=OneWay, Source={StaticResource ViewModel}}" 
+                            CommandParameter="{Binding ElementName=ListViewTransaction, Path=SelectedItem}"/>
                 </StackPanel>
 
             </Grid>

@@ -18,11 +18,13 @@ namespace Sklep.Transaction
             public static void add(string customer, int ID, string product, DateTime date, int amount) 
             {
                 transactions.Add(new Transaction(customer, ID, product, date, amount));
+                
             }
 
-            public static void remove(Transaction transaction)//static
+            public static void remove(Transaction transaction)
             {
-  
+                Products.ProductViewModel.giveBack(transaction.ID, transaction.amount);
+                transactions.Remove(transaction);
             }
 
             #endregion

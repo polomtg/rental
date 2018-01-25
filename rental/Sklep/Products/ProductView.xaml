@@ -67,10 +67,9 @@
             
             <!--PRZYCISKI-->
             <StackPanel Grid.Column="1">
-                <Button Content="Wypożycz" Margin="10" 
+                    <Button Content="Wypożycz" Margin="10" 
                         Command="{Binding startTransaction, Mode=OneWay, Source={StaticResource ViewModel}}" 
                         CommandParameter="{Binding ElementName=ListViewProducts, Path=SelectedItem}"/>
-                <Button Content="Zwróć" Margin="10"/>
             </StackPanel>  
 
         </Grid>

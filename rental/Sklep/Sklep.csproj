@@ -75,6 +75,7 @@
       <DependentUpon>ProductView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Products\ProductViewModel.cs" />
+    <Compile Include="Products\UpdaterTransaction.cs" />
     <Compile Include="Transaction\Transaction.cs" />
     <Compile Include="Products\NewTransaction.xaml.cs">
       <DependentUpon>NewTransaction.xaml</DependentUpon>

@@ -38,6 +38,15 @@ namespace Sklep.Products
             products.Remove(product);
         }
 
+        public static void giveBack(int ID_T, int amount_T)
+        {
+            for (int i = 0; i < products.Count; i++)
+            {
+                if (products[i].ID == ID_T)
+                    products[i].amount += amount_T;
+            }
+        }
+
         public static void newTransaction(Product tmp)
         {
             var transakcja = new NewTransaction();
@@ -76,7 +85,7 @@ namespace Sklep.Products
         {
             get
             {
-                return new Updater(newTransaction);
+                return new UpdaterTransaction(newTransaction);
             }
         }
 

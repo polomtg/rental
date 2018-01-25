@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -53,7 +54,7 @@ namespace Sklep.Products
         {
             _name = NameTxt.Text;
             _category =(Category) CategoryTxt.SelectedValue;
-            _price = float.Parse(PriceTxt.Text);
+            _price = float.Parse(PriceTxt.Text, System.Globalization.CultureInfo.InvariantCulture);
             _amount = Int32.Parse(AmountTxt.Text);
             
             DialogResult = true;
@@ -63,5 +64,18 @@ namespace Sklep.Products
         {
             DialogResult = false;
         }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void NumberValidationFloat(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex(@"^[0-9.]+$");
+            e.Handled = !regex.IsMatch(e.Text);
+        }
+
     }
 }

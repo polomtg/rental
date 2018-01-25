@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sklep.Cutomers"
         mc:Ignorable="d"
-        Title="NewCustomer" Height="300" Width="300">
+        Title="NewCustomer" Height="250" Width="300">
     <Border Padding="10">
         <StackPanel>
 
@@ -33,7 +33,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Text="NIP"  Grid.Column="0"/>
-                <TextBox x:Name="NIPTxt" Grid.Column="1"></TextBox>
+                <TextBox x:Name="NIPTxt" PreviewTextInput="NumberValidationTextBox" Grid.Column="1"></TextBox>
             </Grid>
 
             <!--ADRES-->

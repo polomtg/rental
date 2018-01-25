@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Sklep.Transaction
+namespace Sklep.Products
 {
-    public class Updater : ICommand
+    public class UpdaterTransaction : ICommand
     {
-        private Action<Transaction> taskParameter;
+        private Action<Product> taskParameter;
 
-        public Updater(Action<Transaction> workToDo)
+        public UpdaterTransaction(Action<Product> workToDo)
         {
             taskParameter = workToDo;
         }
@@ -32,7 +32,7 @@ namespace Sklep.Transaction
 
         public void Execute(object parameter)
         {
-                taskParameter(parameter as Transaction);
+                taskParameter(parameter as Product);
         }
     }
 }

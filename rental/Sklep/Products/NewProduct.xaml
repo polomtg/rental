@@ -53,7 +53,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Text="Cena"  Grid.Column="0"/>
-                <TextBox x:Name="PriceTxt" Grid.Column="1"></TextBox>
+                <TextBox x:Name="PriceTxt" Grid.Column="1" PreviewTextInput="NumberValidationFloat"></TextBox>
             </Grid>
 
             <!--EMAIL-->
@@ -64,7 +64,7 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Text="Ilość"  Grid.Column="0"/>
-                <TextBox x:Name="AmountTxt" Grid.Column="1"></TextBox>
+                <TextBox x:Name="AmountTxt" PreviewTextInput="NumberValidationTextBox" Grid.Column="1"></TextBox>
             </Grid>
 
             <!--Przyciski-->
