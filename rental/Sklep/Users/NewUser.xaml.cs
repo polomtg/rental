@@ -23,6 +23,8 @@ namespace Sklep.Users
         private string _email;
         private Role _rola = Role.USER;
 
+        #region Gettery i Settery
+
         public NewUser()
         {
             InitializeComponent();
@@ -43,9 +45,13 @@ namespace Sklep.Users
             get { return _rola; }
         }
 
+        #endregion
+
         private void DodajBtn_Click(object sender, RoutedEventArgs e)
         {
             _name = ImieTxt.Text;
+            _name += " ";
+            _name += NazwiskoTxt.Text;
             _email = EmailTxt.Text;
             _rola = (Role)RolaTxt.SelectedValue;
 

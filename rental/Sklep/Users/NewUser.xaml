@@ -34,6 +34,17 @@
                 <TextBox x:Name="ImieTxt" Grid.Column="1"></TextBox>
             </Grid>
 
+            <!--NAZWIKO-->
+            <Grid Margin="0 0 0 10">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Nazwisko" Margin="0 0 0 10" Grid.Column="0" />
+                <TextBox x:Name="NazwiskoTxt" Grid.Column="1"></TextBox>
+            </Grid>
+
             <!--EMAIL-->
             <Grid Margin="0 0 0 10">
                 <Grid.ColumnDefinitions >

@@ -12,21 +12,12 @@ namespace Sklep.Users
         private string _name;
         private string _email;
         private Role _role;
-        private int _id;
-
-        static private int NUMBER = 1;
 
         public User(string Tname, string Temail, Role Trole)
         {
             _name = Tname;
             _email = Temail;
             _role = Trole;
-            _id = NUMBER++;
-        }
-
-        ~User()
-        {
-            NUMBER--;
         }
 
         /// <summary>
@@ -66,11 +57,6 @@ namespace Sklep.Users
                 _role = value;
                 RisePropertyChanged("rolaE");
             }
-        }
-
-        public int ID
-        {
-            get { return _id; }
         }
 
         #endregion

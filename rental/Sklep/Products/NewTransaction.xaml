@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sklep.Products"
         mc:Ignorable="d"
-        Title="Transkacja" Height="250" Width="300">
+        Title="Transakacja" Height="250" Width="300">
     <Border Padding="10">
 
         <StackPanel>
@@ -47,9 +47,20 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock x:Name="AmountTxt" Text="Ilość" Grid.Column="0" />
+                <TextBlock Text="Ilość" Grid.Column="0" />
 
-                <TextBox Grid.Column="1" PreviewTextInput="NumberValidationTextBox"/>
+                <ComboBox x:Name="AmountTxt" Grid.Column="1"/>
+            </Grid>
+
+            <!--Typ-->
+            <Grid Margin="0 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <CheckBox x:Name="ReservationBox" Content="Rezerwacja" Grid.Column="1"/>
+
             </Grid>
 
             <Grid Margin="0 10 0 0">

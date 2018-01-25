@@ -7,6 +7,12 @@ using System.Windows.Input;
 
 namespace Sklep.Transaction
 {
+    public enum Type
+    {
+        REZERWACJA,
+        WYNAJEM
+    }
+
     public class Transaction
     {
         private string _customer;
@@ -14,24 +20,27 @@ namespace Sklep.Transaction
         private int _ID;
         private DateTime _date;
         private int _amount;
+        Type _type;
 
-        public Transaction(string customerT, int IDT, string productT, DateTime dateT, int amountT)
+        public Transaction(string customerT, int IDT, string productT, DateTime dateT, int amountT, bool ifReservationT)
         {
             _customer = customerT;
             _product = productT;
             _ID = IDT;
             _date = dateT;
             _amount = amountT;
+
+            if (ifReservationT)
+                _type = Type.REZERWACJA;
+            else
+                _type = Type.WYNAJEM;
         }
 
         #region Gettery i Settery
 
         public string customer
         {
-            get
-            {
-                return _customer;
-            }
+            get { return _customer;}
             set
             {
                 _customer = value;
@@ -84,6 +93,17 @@ namespace Sklep.Transaction
             {
                 _ID = value;
             }
+        }
+
+        public Type type
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
+
+        public string typeS
+        {
+            get { return _type.ToString(); }
         }
 
         #endregion

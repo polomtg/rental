@@ -49,15 +49,20 @@ namespace Sklep.Products
 
         public static void newTransaction(Product tmp)
         {
-            var transakcja = new NewTransaction();
+            var transakcja = new NewTransaction(tmp.amount);
 
             if (transakcja.ShowDialog() == true)
-                Transaction.TransactionViewModel.add(transakcja.customer, tmp.ID, tmp.name, transakcja.date, transakcja.amount);
-
-            for(int i = 0; i < products.Count; i++)
             {
-                if (products[i].ID == tmp.ID)
-                    products[i].amount -= transakcja.amount;
+                Transaction.TransactionViewModel.add(transakcja.customer, tmp.ID, tmp.name, transakcja.date, transakcja.amount, transakcja.ifReservation);
+
+                if (!transakcja.ifReservation)
+                {
+                    for (int i = 0; i < products.Count; i++)
+                    {
+                        if (products[i].ID == tmp.ID)
+                            products[i].amount -= transakcja.amount;
+                    }
+                }
             }
         }
 

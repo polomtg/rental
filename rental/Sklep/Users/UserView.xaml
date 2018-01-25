@@ -29,8 +29,6 @@
                 <ListView.View>
 
                     <GridView AllowsColumnReorder="True">
-                        <GridViewColumn Header="Lp" 
-                                    DisplayMemberBinding="{Binding ID}"/>
                         <GridViewColumn Header="Imie i Nazwisko"            
                                     DisplayMemberBinding="{Binding name}"/>
                         <GridViewColumn Header="Email"     
@@ -45,7 +43,7 @@
             <!--PRZYCISKI-->
             <StackPanel Grid.Column="1" Margin="10 0 0 0">
 
-                <Button x:Name="ButtonDodaj" Content="AddToList" Margin="0 0 0 15"     
+                <Button x:Name="ButtonDodaj" Content="Dodaj" Margin="0 0 0 15"     
                     Command="{Binding UpdateCommand, Source={StaticResource userView}}" />
                 <Button x:Name="EdytujBtn"  Content="Edytuj"  Margin="0 0 0 15"/>
                 <Button Content="Usuń"  Margin="0 0 0 15" 

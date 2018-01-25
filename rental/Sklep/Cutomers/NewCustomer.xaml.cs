@@ -47,6 +47,8 @@ namespace Sklep.Cutomers
         private void DodajBtn_Click(object sender, RoutedEventArgs e)
         {
             _name = NameTxt.Text;
+            _name += " ";
+            _name += SurnameTxt.Text;
             _NIP = long.Parse(NIPTxt.Text);
             _adress = AdressTxt.Text;
 

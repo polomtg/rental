@@ -27,6 +27,8 @@
                 <ListView x:Name="ListViewTransaction" SelectionMode="Single" Height="Auto" MinHeight="200">
                     <ListView.View>
                         <GridView AllowsColumnReorder="True">
+                            <GridViewColumn Header="Rodzaj"
+                                            DisplayMemberBinding="{Binding typeS}"/>
                             <GridViewColumn Header="Klient" 
                                             DisplayMemberBinding="{Binding customer}"/>
                             <GridViewColumn Header="Produkt ID" 

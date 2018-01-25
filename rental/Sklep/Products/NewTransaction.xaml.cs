@@ -20,15 +20,19 @@ namespace Sklep.Products
     /// </summary>
     public partial class NewTransaction : Window
     {
-        public NewTransaction()
+        public NewTransaction(int amount_T)
         {
             InitializeComponent();
             GetCustomer.ItemsSource = Sklep.Cutomers.CustomerViewModel.customers;
+
+            for (int i = 1; i <= amount_T; i++)
+                AmountTxt.Items.Add(i);     
         }
 
         private string _customer;
         private DateTime _date;
         private int _amount;
+        private bool _ifReservation;
 
         #region Gettery i Settery
 
@@ -68,26 +72,33 @@ namespace Sklep.Products
             }
         }
 
+        public bool ifReservation
+        {
+            get { return _ifReservation;}
+            set { _ifReservation = value; }
+        }
+
         #endregion
 
         private void DodajTranskacje_Click(object sender, RoutedEventArgs e)
         {
             _customer = GetCustomer.SelectedItem.ToString();
              _date = DateTxt.SelectedDate.Value;
-            _amount = 2;//Int32.Parse(AmountTxt.Text);
+            _amount = Int32.Parse(AmountTxt.SelectedItem.ToString());
+
+            bool? tmp = ReservationBox.IsChecked;
+
+            if (tmp == true)
+                _ifReservation = true;
+            else
+                _ifReservation = false;
 
             DialogResult = true;
         }
 
         private void AnulujTranskacje_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+            DialogResult = false;
         }
     }
 }

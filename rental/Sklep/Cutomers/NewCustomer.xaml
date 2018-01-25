@@ -25,6 +25,17 @@
                 <TextBox x:Name="NameTxt" Grid.Column="1"></TextBox>
             </Grid>
 
+            <!--NAZWISKO-->
+            <Grid Margin="0 0 0 10">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="Nazwisko" Margin="0 0 0 10" Grid.Column="0" />
+                <TextBox x:Name="SurnameTxt" Grid.Column="1"></TextBox>
+            </Grid>
+
             <!--NIP-->
             <Grid Margin="0 0 0 10">
                 <Grid.ColumnDefinitions >
