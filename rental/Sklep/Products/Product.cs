@@ -123,6 +123,12 @@ namespace Sklep.Products
             }
         }
 
+        public static int GET_ID
+        {
+            set { GETID = value; }
+            get { return GETID; }
+        }
+
         #endregion
     }
 }

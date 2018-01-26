@@ -34,7 +34,13 @@ namespace Sklep.Cutomers
         public void add(Customer tmp)
         {
             customers.Add(tmp);
-            sqlUpdate.addToDB(tmp);
+
+            DataRow dataRow = sqlUpdate.getDataRow();
+            dataRow[0] = tmp.name;
+            dataRow[1] = tmp.NIP;
+            dataRow[2] = tmp.adress;
+
+            sqlUpdate.addToDB(dataRow, 3);
         }
 
         public void remove(Customer tmp)

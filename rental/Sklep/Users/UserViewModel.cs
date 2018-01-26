@@ -12,17 +12,14 @@ namespace Sklep.Users
     public class UserViewModel
     {
         public SingletonUser users = SingletonUser.Instance;
-        //public static ObservableCollection<User> users = new ObservableCollection<User>();
 
         public UserViewModel()
         {
         }
       
         public void LoadUsers()
-        { 
-            users.add( new User("Jan Kowalski", "kowalski@o2.pl", Users.Role.GUEST));
-            users.add(new User("Mr Nobody", "nobody@gmail.pl", Users.Role.ADMIN));
-            users.add(new User("Neo", "matrix@rm.pl", Users.Role.USER));
+        {
+            users.loadData();
         }
 
         #region Data Management

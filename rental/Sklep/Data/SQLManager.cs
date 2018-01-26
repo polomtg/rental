@@ -62,20 +62,66 @@ namespace Sklep.Data
             dataAdapter.Update(dataSet);
         }
 
-        public void addToDB(Cutomers.Customer customer)
+        public void removeFromDB(int row, string text)
         {
             connect();
-            DataRow oDataRow = dataTable.NewRow();
-            oDataRow[0] = customer.name;
-            oDataRow[1] = customer.NIP;
-            oDataRow[2] = customer.adress;
-            dataTable.Rows.Add(oDataRow);
+            for (int i = dataTable.Rows.Count - 1; i >= 0; i--)
+            {
+                var d = dataTable.Rows[i];
+                string dt_ID = Convert.ToString(d[row]);
+
+                if (text == dt_ID)
+                {
+                    dataTable.Rows[i].Delete();
+                    break;
+                }
+            }
+
+            dataAdapter.Update(dataSet);
+        }
+
+        public void removeFromDB(int row, int ID, string customer)
+        {
+            connect();
+            for (int i = dataTable.Rows.Count - 1; i >= 0; i--)
+            {
+                var d = dataTable.Rows[i];
+                string klient = Convert.ToString(d[0]);
+
+                if (customer == klient)
+                {
+                    int ID_T = Convert.ToInt32(d[row]);
+                    if (ID_T == ID)
+                    {
+                        dataTable.Rows[i].Delete();
+                        break;
+                    }
+                }
+            }
+
+            dataAdapter.Update(dataSet);
+        }
+
+        public void addToDB(DataRow dataRow, int columns)
+        {
+            connect();
+            DataRow data = dataTable.NewRow();
+
+            for (int i = 0; i < columns; i++)
+                data[i] = dataRow[i];
+
+            dataTable.Rows.Add(data);
             dataAdapter.Update(dataSet);
         }
 
         public DataSet getData()
         {
             return dataSet;
+        }
+
+        public DataRow getDataRow()
+        {
+            return dataTable.NewRow();
         }
     }
 }

@@ -14,13 +14,12 @@ namespace Sklep.Products
 
         public ProductViewModel()
         {
+
         }
 
         public void LoadProducts()
         {
-            products.add(new Product("Koparka", Category.SHELF, 44.90f, 5, 5));
-            products.add(new Product("Koparka", Category.SHELF, 44.90f, 5, 5));
-            products.add(new Product("Koparka", Category.SHELF, 44.90f, 5, 5));
+            products.loadData();
         }
 
         #region Data Management
@@ -43,7 +42,13 @@ namespace Sklep.Products
             for (int i = 0; i < products.products.Count; i++)
             {
                 if (products.products[i].ID == ID_T)
+                {
                     products.products[i].amount += amount_T;
+                    var operation = products.products[i];
+                    remove(products.products[i]);
+                    products.add(operation);
+                    break;
+                }
             }
         }
 
@@ -61,7 +66,13 @@ namespace Sklep.Products
                     for (int i = 0; i < products.products.Count; i++)
                     {
                         if (products.products[i].ID == tmp.ID)
+                        {
                             products.products[i].amount -= transakcja.amount;
+                            var operation = products.products[i];
+                            remove(products.products[i]);
+                            products.add(operation);
+                            break;
+                        }
                     }
                 }
             }

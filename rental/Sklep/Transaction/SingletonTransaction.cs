@@ -34,30 +34,46 @@ namespace Sklep.Transaction
         public void add(Transaction tmp)
         {
             transactions.Add(tmp);
-           // sqlUpdate.addToDB(tmp);
+
+            DataRow dataRow = sqlUpdate.getDataRow();
+
+            dataRow[0] = tmp.customer;
+            dataRow[1] = tmp.product;
+            dataRow[2] = tmp.ID;
+            dataRow[3] = tmp.date;
+            dataRow[4] = tmp.amount;
+            dataRow[5] = true;
+
+            if (tmp.type == Type.WYNAJEM)
+                dataRow[5] = false;
+
+            sqlUpdate.addToDB(dataRow, 6);
         }
 
         public void remove(Transaction tmp)
         {
             transactions.Remove(tmp);
-           // sqlUpdate.removeFromDB(1, tmp.NIP);
+            sqlUpdate.removeFromDB(2, tmp.ID, tmp.customer);
         }
 
         public void loadData()
         {
-           /* DataSet ds = sqlUpdate.getData();
+            DataSet ds = sqlUpdate.getData();
 
             foreach (DataTable table in ds.Tables)
             {
                 foreach (DataRow row in table.Rows)
                 {
-                    string name = Convert.ToString(row[0]);
-                    int NIP = Convert.ToInt32(row[1]);
-                    string adress = Convert.ToString(row[2]);
+                    string customer = Convert.ToString(row[0]);
+                    string product = Convert.ToString(row[1]);
+                    int ID = Convert.ToInt32(row[2]);
+                    DateTime date = Convert.ToDateTime(row[3]);
+                    int amount = Convert.ToInt32(row[4]);
+                    bool reservation = Convert.ToBoolean(row[5]);
 
-                    customers.Add(new Customer(name, NIP, adress));
+                    transactions.Add(new Transaction(customer, ID, product, date, amount, reservation ));
                 }
-            }*/
+            }
         }
     }
 }

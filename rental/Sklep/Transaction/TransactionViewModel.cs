@@ -15,7 +15,7 @@ namespace Sklep.Transaction
 
         public void LoadTransaction()
         {
-
+            transactions.loadData();
         }
 
         #region Data Managment

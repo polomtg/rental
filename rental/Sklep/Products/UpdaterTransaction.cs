@@ -21,6 +21,11 @@ namespace Sklep.Products
             if (parameter == null)
                 return false;
 
+            var tmp = parameter as Product;
+
+            if (tmp.amount <= 0)
+                return false;
+
             return true;
         }
 

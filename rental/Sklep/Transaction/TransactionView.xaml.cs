@@ -26,8 +26,8 @@ namespace Sklep.Transaction
         {
             InitializeComponent();
 
-            if(viewModel.transactions.transactions != null)
-                ListViewTransaction.ItemsSource = viewModel.transactions.transactions;
+            viewModel.LoadTransaction();
+            ListViewTransaction.ItemsSource = viewModel.transactions.transactions;
         }
     }
 }

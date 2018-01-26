@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,30 +34,38 @@ namespace Sklep.Users
         public void add(User tmp)
         {
             users.Add(tmp);
-            // sqlUpdate.addToDB(tmp);
+
+            DataRow dataRow = sqlUpdate.getDataRow();
+
+            dataRow[0] = tmp.name;
+            dataRow[1] = tmp.email;
+            dataRow[2] = tmp.rolaS;
+
+            sqlUpdate.addToDB(dataRow, 3);
         }
 
         public void remove(User tmp)
         {
             users.Remove(tmp);
-            // sqlUpdate.removeFromDB(1, tmp.NIP);
+            sqlUpdate.removeFromDB(1, tmp.email);
         }
 
         public void loadData()
         {
-            /* DataSet ds = sqlUpdate.getData();
+             DataSet ds = sqlUpdate.getData();
 
              foreach (DataTable table in ds.Tables)
              {
                  foreach (DataRow row in table.Rows)
                  {
                      string name = Convert.ToString(row[0]);
-                     int NIP = Convert.ToInt32(row[1]);
-                     string adress = Convert.ToString(row[2]);
+                     string email = Convert.ToString(row[1]);
+                    string tmp = Convert.ToString(row[2]);
+                     Role rola = (Role)Enum.Parse(typeof(Role), tmp);
 
-                     customers.Add(new Customer(name, NIP, adress));
+                     users.Add(new User(name, email, rola));
                  }
-             }*/
+             }
         }
     }
 }
