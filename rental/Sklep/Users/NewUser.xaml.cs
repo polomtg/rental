@@ -21,14 +21,34 @@ namespace Sklep.Users
     {
         private string _name;
         private string _email;
-        private Role _rola = Role.USER;
-
-        #region Gettery i Settery
+        private Role _rola;
 
         public NewUser()
         {
             InitializeComponent();
         }
+
+        public NewUser(User user)
+        {
+            InitializeComponent();
+            _name = user.name;
+            _email = user.email;
+            _rola = user.rolaE;
+
+            int index = _name.IndexOf(" ");
+
+            if (index != -1)
+            {
+                ImieTxt.Text = _name.Substring(0, index);
+                NazwiskoTxt.Text = _name.Substring(index + 1, _name.Length - index - 1);
+            }
+            else
+               ImieTxt.Text = _name;
+
+            EmailTxt.Text = _email;
+        }
+
+        #region Gettery i Settery
 
         public string name
         {
@@ -49,11 +69,17 @@ namespace Sklep.Users
 
         private void DodajBtn_Click(object sender, RoutedEventArgs e)
         {
-            _name = ImieTxt.Text;
-            _name += " ";
-            _name += NazwiskoTxt.Text;
+            if(ImieTxt.Text != null && ImieTxt.Text != "")
+                _name = ImieTxt.Text;
+            if (ImieTxt.Text != null && ImieTxt.Text != "")
+                _name += " ";
+            if (ImieTxt.Text != null && ImieTxt.Text != "")
+                _name += NazwiskoTxt.Text;
+
             _email = EmailTxt.Text;
-            _rola = (Role)RolaTxt.SelectedValue;
+
+            if(RolaTxt.SelectedValue != null)
+                _rola = (Role)RolaTxt.SelectedValue;
 
             DialogResult = true;
         }

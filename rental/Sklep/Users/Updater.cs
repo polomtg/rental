@@ -24,7 +24,13 @@ namespace Sklep.Users
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            if (commandTask != null)
+                return true;
+
+            if (parameter != null)
+                return true;
+
+            return false;
         }
 
         public event EventHandler CanExecuteChanged

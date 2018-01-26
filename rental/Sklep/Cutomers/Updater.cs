@@ -13,7 +13,6 @@ namespace Sklep.Cutomers
         private Action commandTask;
         private Action<Customer> taskParameter;
 
-
         public Updater(Action workToDo)
         {
             commandTask = workToDo;
@@ -26,7 +25,13 @@ namespace Sklep.Cutomers
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            if(commandTask != null)
+                return true;
+
+            if (parameter != null)
+                return true;
+
+            return false;
         }
 
         public event EventHandler CanExecuteChanged
@@ -34,14 +39,6 @@ namespace Sklep.Cutomers
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
-
-      /*  public void Execute(object parameter)
-        {
-            if (parameter == null)
-                CustomerViewModel.add();
-            else
-                CustomerViewModel.remove(parameter as Customer);
-        }*/
 
         public void Execute(object parameter)
         {

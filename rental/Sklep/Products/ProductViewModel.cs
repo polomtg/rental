@@ -12,11 +12,6 @@ namespace Sklep.Products
     {
         public SingletonProduct products = SingletonProduct.Instance;
 
-        public ProductViewModel()
-        {
-
-        }
-
         public void LoadProducts()
         {
             products.loadData();
@@ -37,13 +32,13 @@ namespace Sklep.Products
             products.remove(product);
         }
 
-        public void giveBack(int ID_T, int amount_T)
+        public void giveBack(int ID_T, int avaible_T)
         {
             for (int i = 0; i < products.products.Count; i++)
             {
                 if (products.products[i].ID == ID_T)
                 {
-                    products.products[i].amount += amount_T;
+                    products.products[i].available += avaible_T;
                     var operation = products.products[i];
                     remove(products.products[i]);
                     products.add(operation);
@@ -63,18 +58,34 @@ namespace Sklep.Products
 
                 if (!transakcja.ifReservation)
                 {
-                    for (int i = 0; i < products.products.Count; i++)
-                    {
-                        if (products.products[i].ID == tmp.ID)
-                        {
-                            products.products[i].amount -= transakcja.amount;
-                            var operation = products.products[i];
-                            remove(products.products[i]);
-                            products.add(operation);
-                            break;
-                        }
-                    }
+                    transactionCleaner(tmp.ID, transakcja.amount);
                 }
+            }
+        }
+
+        private void transactionCleaner(int ID, int available)
+        {
+            for(int i = 0; i < products.products.Count; i++)
+            {
+                if (products.products[i].ID == ID)
+                {
+                    products.products[i].available -= available;
+                    var operation = products.products[i];
+                    remove(products.products[i]);
+                    products.add(operation);
+                    break;
+                }
+            }
+        }
+
+        public void edit(Product product)
+        {
+            var dodaj = new NewProduct(product);
+
+            if (dodaj.ShowDialog() == true)
+            {
+                remove(product);
+                products.add(new Product(product));
             }
         }
 
@@ -102,8 +113,13 @@ namespace Sklep.Products
         {
             get
             {
-                return new UpdaterTransaction(newTransaction);
+                return new Updater(newTransaction);
             }
+        }
+
+        public ICommand editCommand
+        {
+            get { return new Updater(edit); }
         }
 
         #endregion

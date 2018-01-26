@@ -32,6 +32,17 @@ namespace Sklep.Cutomers
             customers.remove(customer);
         }
 
+        public void edit(Customer customer)
+        {
+            var edytuj = new NewCustomer(customer);
+
+            if(edytuj.ShowDialog() == true)
+            {
+                remove(customer);
+                customers.add(new Customer(edytuj.name, edytuj.NIP, edytuj.adress));
+            }
+        }
+
         #endregion
 
         #region Commands
@@ -48,6 +59,13 @@ namespace Sklep.Cutomers
             get
             {
                 return new Updater(remove);
+            }
+        }
+        public ICommand editCommand
+        {
+            get
+            {
+                return new Updater(edit);
             }
         }
 

@@ -40,7 +40,9 @@
 
                 <Button Content="Dodaj" x:Name="DodajKlientaBtn" Margin="0 0 0 15" 
                         Command="{Binding addCommand, Source={StaticResource ViewModel}}" />
-                <Button x:Name="EdytujKlientaBtn" Content="Edytuj"  Margin="0 0 0 15"/>
+                <Button x:Name="EdytujKlientaBtn" Content="Edytuj"  Margin="0 0 0 15" 
+                        Command="{Binding editCommand, Mode=OneWay, Source={StaticResource ViewModel}}"
+                        CommandParameter="{Binding ElementName=ListViewCustomers, Path=SelectedItem}"/>
                 <Button Content="Usuń"  Margin="0 0 0 15" 
                         Command="{Binding removeCommand, Source={StaticResource ViewModel}}" 
                         CommandParameter="{Binding ElementName=ListViewCustomers, Path=SelectedItem}"/>

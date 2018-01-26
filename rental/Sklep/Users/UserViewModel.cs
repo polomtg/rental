@@ -37,6 +37,17 @@ namespace Sklep.Users
             users.remove(user);
         }
 
+        public void edit(User user)
+        {
+            var edytuj = new NewUser(user);
+
+            if (edytuj.ShowDialog() == true)
+            {
+                remove(user);
+                users.add(new User(edytuj.name, edytuj.email, edytuj.rola));
+            }
+        }
+
         #endregion
 
         #region Command
@@ -54,6 +65,14 @@ namespace Sklep.Users
             get
             {
                 return new Updater(remove);
+            }
+        }
+        
+        public ICommand editCommand
+        {
+            get
+            {
+                return new Updater(edit);
             }
         }
 

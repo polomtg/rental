@@ -20,11 +20,10 @@ namespace Sklep.Cutomers
     /// </summary>
     public partial class CustomerView : UserControl
     {
-        CustomerViewModel viewModel = null;
+        CustomerViewModel viewModel = new CustomerViewModel();
 
         public CustomerView()
         {
-            viewModel = new CustomerViewModel();
             InitializeComponent();
             viewModel.LoadCustomer();
             ListViewCustomers.ItemsSource = viewModel.customers.customers;

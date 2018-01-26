@@ -24,6 +24,7 @@ namespace Sklep.Products
         private Category _category;
         private float _price;
         private int _amount;
+        private int _ID;
 
         public string name
         {
@@ -45,15 +46,38 @@ namespace Sklep.Products
             get { return _amount; }
         }
 
+        public int ID
+        {
+            get { return _ID; }
+        }
+
         public NewProduct()
         {
             InitializeComponent();
         }
 
+        public NewProduct(Product product)
+        {
+            InitializeComponent();
+
+            _name = product.name;
+            _category = product.categoryE;
+            _price = product.price;
+            _amount = product.amount;
+            _ID = product.ID;
+
+            NameTxt.Text = _name;
+            PriceTxt.Text = _price.ToString();
+            AmountTxt.Text = _amount.ToString();
+        }
+
         private void DodajBtn_Click(object sender, RoutedEventArgs e)
         {
             _name = NameTxt.Text;
-            _category =(Category) CategoryTxt.SelectedValue;
+
+            if(CategoryTxt.SelectedValue != null)
+                _category =(Category) CategoryTxt.SelectedValue;
+
             _price = float.Parse(PriceTxt.Text, System.Globalization.CultureInfo.InvariantCulture);
             _amount = Int32.Parse(AmountTxt.Text);
             

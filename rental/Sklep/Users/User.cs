@@ -52,6 +52,7 @@ namespace Sklep.Users
 
         public Role rolaE
         {
+            get { return _role; }
             set
             {
                 _role = value;

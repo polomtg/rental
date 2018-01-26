@@ -55,11 +55,13 @@
                     </Grid.ColumnDefinitions>
 
                     <Button x:Name="DodajProduktBtn" Content="Dodaj" Margin="10" Grid.Column="0"
-                        Command="{Binding UpdateCommandProduct, Source={StaticResource ViewModel}}"/>
-                    <Button x:Name="EdytujProduktBtn" Content="Edytuj"  Margin="10" Grid.Column="1"/>
+                            Command="{Binding UpdateCommandProduct, Source={StaticResource ViewModel}}"/>
+                    <Button x:Name="EdytujProduktBtn" Content="Edytuj"  Margin="10" Grid.Column="1" 
+                            Command="{Binding editCommand, Mode=OneWay, Source={StaticResource ViewModel}}"
+                            CommandParameter="{Binding ElementName=ListViewProducts, Path=SelectedItem}"/>
                     <Button Content="Usuń"  Margin="10"  Grid.Column="2"
-                        Command="{Binding removeCommand, Source={StaticResource ViewModel}}" 
-                        CommandParameter="{Binding ElementName=ListViewProducts, Path=SelectedItem}"/>
+                            Command="{Binding removeCommand, Source={StaticResource ViewModel}}" 
+                            CommandParameter="{Binding ElementName=ListViewProducts, Path=SelectedItem}"/>
 
                 </Grid>
                 

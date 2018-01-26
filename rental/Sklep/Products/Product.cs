@@ -39,6 +39,16 @@ namespace Sklep.Products
             _ID = ID;
         }
 
+        public Product(int ID, string nameT, Category categoryT, float priceT, int amountT, int availableT)
+        {
+            _name = nameT;
+            _category = categoryT;
+            _price = priceT;
+            _amount = amountT;
+            _available = availableT;
+            _ID = ID;
+        }
+
         public Product(Product productT)
         {
             _ID = productT.ID;
@@ -82,10 +92,7 @@ namespace Sklep.Products
 
         public Category categoryE
         {
-            get
-            {
-                return _category;
-            }
+            get {  return _category;}
             set
             {
                 _category = value;

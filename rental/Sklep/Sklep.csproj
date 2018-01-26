@@ -101,7 +101,6 @@
     </Compile>
     <Compile Include="Products\ProductViewModel.cs" />
     <Compile Include="Products\SingletonProduct.cs" />
-    <Compile Include="Products\UpdaterTransaction.cs" />
     <Compile Include="Transaction\SingletonTransaction.cs" />
     <Compile Include="Transaction\Transaction.cs" />
     <Compile Include="Products\NewTransaction.xaml.cs">

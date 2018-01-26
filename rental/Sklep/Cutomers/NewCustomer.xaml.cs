@@ -29,6 +29,21 @@ namespace Sklep.Cutomers
             InitializeComponent();
         }
 
+        public NewCustomer(Customer customer)
+        {
+            InitializeComponent();
+            _name = customer.name;
+            _NIP = customer.NIP;
+            _adress = customer.adress;
+
+            int index = customer.name.IndexOf(" ");
+
+            NameTxt.Text = _name.Substring(0, index);
+            SurnameTxt.Text = _name.Substring(index + 1, _name.Length - index - 1);
+            NIPTxt.Text = Convert.ToString(NIP);
+            AdressTxt.Text = _adress;
+        }
+
         public string name
         {
             get { return _name; }
