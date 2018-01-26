@@ -30,7 +30,7 @@ namespace Sklep.Users
 
         public void InitBinding()
         {
-            ListOfUsers.ItemsSource = UserViewModel.users;
+            ListOfUsers.ItemsSource = viewModel.users.users;
             viewModel.LoadUsers();
         }
     }

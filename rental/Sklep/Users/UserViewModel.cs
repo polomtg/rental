@@ -11,7 +11,8 @@ namespace Sklep.Users
 {
     public class UserViewModel
     {
-        public static ObservableCollection<User> users = new ObservableCollection<User>();
+        public SingletonUser users = SingletonUser.Instance;
+        //public static ObservableCollection<User> users = new ObservableCollection<User>();
 
         public UserViewModel()
         {
@@ -19,24 +20,24 @@ namespace Sklep.Users
       
         public void LoadUsers()
         { 
-            users.Add( new User("Jan Kowalski", "kowalski@o2.pl", Users.Role.GUEST));
-            users.Add(new User("Mr Nobody", "nobody@gmail.pl", Users.Role.ADMIN));
-            users.Add(new User("Neo", "matrix@rm.pl", Users.Role.USER));
+            users.add( new User("Jan Kowalski", "kowalski@o2.pl", Users.Role.GUEST));
+            users.add(new User("Mr Nobody", "nobody@gmail.pl", Users.Role.ADMIN));
+            users.add(new User("Neo", "matrix@rm.pl", Users.Role.USER));
         }
 
         #region Data Management
 
-        public static void add()
+        public void add()
         {
             var dodaj = new NewUser();
 
             if (dodaj.ShowDialog() == true)
-                users.Add(new User(dodaj.name, dodaj.email, dodaj.rola));
+                users.add(new User(dodaj.name, dodaj.email, dodaj.rola));
         }
 
-        public static void remove(User user)
+        public void remove(User user)
         {
-            users.Remove(user);
+            users.remove(user);
         }
 
         #endregion

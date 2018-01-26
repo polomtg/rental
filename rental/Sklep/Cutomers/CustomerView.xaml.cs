@@ -20,18 +20,15 @@ namespace Sklep.Cutomers
     /// </summary>
     public partial class CustomerView : UserControl
     {
-        CustomerViewModel viewModel = new CustomerViewModel();
+        CustomerViewModel viewModel = null;
 
         public CustomerView()
         {
+            viewModel = new CustomerViewModel();
             InitializeComponent();
-            InitBinding();
+            viewModel.LoadCustomer();
+            ListViewCustomers.ItemsSource = viewModel.customers.customers;
         }
 
-        private void InitBinding()
-        {
-            ListViewCustomers.ItemsSource = CustomerViewModel.customers; //static
-            viewModel.LoadCustomer();
-        }
     }
 }

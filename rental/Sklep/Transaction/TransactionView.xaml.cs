@@ -20,10 +20,14 @@ namespace Sklep.Transaction
     /// </summary>
     public partial class TransactionView : UserControl
     {
+        TransactionViewModel viewModel = new TransactionViewModel();
+
         public TransactionView()
         {
             InitializeComponent();
-            ListViewTransaction.ItemsSource = TransactionViewModel.transactions;
+
+            if(viewModel.transactions.transactions != null)
+                ListViewTransaction.ItemsSource = viewModel.transactions.transactions;
         }
     }
 }

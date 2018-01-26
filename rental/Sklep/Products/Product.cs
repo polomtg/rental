@@ -9,7 +9,7 @@ namespace Sklep.Products
 {
     public class Product : INotifyPropertyChanged
     {
-        static int GETID = 1010100;
+        static int GETID = 10101000;
 
         private int _ID;
         private string _name;
@@ -27,6 +27,16 @@ namespace Sklep.Products
             _price = priceT;
             _amount = amountT;
             _available = availableT;
+        }
+
+        public Product(int ID, string nameT, string categoryT, float priceT, int amountT, int availableT)
+        {
+            _name = nameT;
+            _category =(Category) Enum.Parse(typeof(Category), categoryT);
+            _price = priceT;
+            _amount = amountT;
+            _available = availableT;
+            _ID = ID;
         }
 
         public Product(Product productT)

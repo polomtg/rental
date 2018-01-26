@@ -23,7 +23,9 @@ namespace Sklep.Products
         public NewTransaction(int amount_T)
         {
             InitializeComponent();
-            GetCustomer.ItemsSource = Sklep.Cutomers.CustomerViewModel.customers;
+            Cutomers.SingletonCustomer tmp = Cutomers.SingletonCustomer.Instance;
+            
+            GetCustomer.ItemsSource = tmp.customers; //static
 
             for (int i = 1; i <= amount_T; i++)
                 AmountTxt.Items.Add(i);     

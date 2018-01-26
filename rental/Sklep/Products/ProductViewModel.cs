@@ -10,7 +10,7 @@ namespace Sklep.Products
 {
     public class ProductViewModel
     {
-        public static ObservableCollection<Product> products = new ObservableCollection<Product>();
+        public SingletonProduct products = SingletonProduct.Instance;
 
         public ProductViewModel()
         {
@@ -18,49 +18,50 @@ namespace Sklep.Products
 
         public void LoadProducts()
         {
-            products.Add(new Product("Koparka", Category.SHELF, 44.90f, 5, 5));
-            products.Add(new Product("Koparka", Category.SHELF, 44.90f, 5, 5));
-            products.Add(new Product("Koparka", Category.SHELF, 44.90f, 5, 5));
+            products.add(new Product("Koparka", Category.SHELF, 44.90f, 5, 5));
+            products.add(new Product("Koparka", Category.SHELF, 44.90f, 5, 5));
+            products.add(new Product("Koparka", Category.SHELF, 44.90f, 5, 5));
         }
 
         #region Data Management
 
-        public static void add()
+        public void add()
         {
             var dodaj = new NewProduct();
 
             if (dodaj.ShowDialog() == true)
-                products.Add(new Product(dodaj.name, dodaj.category, dodaj.price, dodaj.amount, dodaj.amount));
+                products.add(new Product(dodaj.name, dodaj.category, dodaj.price, dodaj.amount, dodaj.amount));
         }
 
-        public static void remove(Product product)
+        public void remove(Product product)
         {
-            products.Remove(product);
+            products.remove(product);
         }
 
-        public static void giveBack(int ID_T, int amount_T)
+        public void giveBack(int ID_T, int amount_T)
         {
-            for (int i = 0; i < products.Count; i++)
+            for (int i = 0; i < products.products.Count; i++)
             {
-                if (products[i].ID == ID_T)
-                    products[i].amount += amount_T;
+                if (products.products[i].ID == ID_T)
+                    products.products[i].amount += amount_T;
             }
         }
 
-        public static void newTransaction(Product tmp)
+        public void newTransaction(Product tmp)
         {
             var transakcja = new NewTransaction(tmp.amount);
 
             if (transakcja.ShowDialog() == true)
             {
-                Transaction.TransactionViewModel.add(transakcja.customer, tmp.ID, tmp.name, transakcja.date, transakcja.amount, transakcja.ifReservation);
+                Transaction.TransactionViewModel tempT = new Transaction.TransactionViewModel();
+                tempT.add(transakcja.customer, tmp.ID, tmp.name, transakcja.date, transakcja.amount, transakcja.ifReservation);
 
                 if (!transakcja.ifReservation)
                 {
-                    for (int i = 0; i < products.Count; i++)
+                    for (int i = 0; i < products.products.Count; i++)
                     {
-                        if (products[i].ID == tmp.ID)
-                            products[i].amount -= transakcja.amount;
+                        if (products.products[i].ID == tmp.ID)
+                            products.products[i].amount -= transakcja.amount;
                     }
                 }
             }

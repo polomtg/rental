@@ -13,6 +13,7 @@ namespace Sklep.Cutomers
         private Action commandTask;
         private Action<Customer> taskParameter;
 
+
         public Updater(Action workToDo)
         {
             commandTask = workToDo;

@@ -30,7 +30,7 @@ namespace Sklep.Products
 
         public void InitBinding()
         {
-            ListViewProducts.ItemsSource = ProductViewModel.products;
+            ListViewProducts.ItemsSource = viewModel.products.products;
             viewModel.LoadProducts();
         }
     }

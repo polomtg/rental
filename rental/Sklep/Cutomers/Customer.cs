@@ -20,6 +20,7 @@ namespace Sklep.Cutomers
             _name = nameT;
             _NIP = NIPT;
             _adress = adressT;
+
         }
 
         private void RisePropertyChanged(string property)
@@ -66,6 +67,7 @@ namespace Sklep.Cutomers
                 RisePropertyChanged("adress");
             }
         }
+
         #endregion
 
     }

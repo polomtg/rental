@@ -9,7 +9,7 @@
         xmlns:product="clr-namespace:Sklep.Products"
         xmlns:transaction="clr-namespace:Sklep.Transaction"
         mc:Ignorable="d"
-        Title="Wypożyczalnia" Height="400" Width="650">
+        Title="Wypożyczalnia" Height="400" Width="650" Closing="Window_Closing">
 
     <Border Padding="15">
 

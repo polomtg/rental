@@ -11,24 +11,30 @@ namespace Sklep.Transaction
 
     public class TransactionViewModel
     {
-        public static ObservableCollection<Transaction> transactions = new ObservableCollection<Transaction>();
+        public SingletonTransaction transactions = SingletonTransaction.Instance;
 
-        #region Data Managment
-
-        public static void add(string customer, int ID, string product, DateTime date, int amount, bool ifReservation)
+        public void LoadTransaction()
         {
-            transactions.Add(new Transaction(customer, ID, product, date, amount, ifReservation));
 
         }
 
-        public static void remove(Transaction transaction)
+        #region Data Managment
+
+        public void add(string customer, int ID, string product, DateTime date, int amount, bool ifReservation)
+        {
+            transactions.add(new Transaction(customer, ID, product, date, amount, ifReservation));
+        }
+
+        public void remove(Transaction transaction)
         {
             int amount = transaction.amount;
             if (transaction.type == Type.REZERWACJA)
                 amount = 0;
 
-            Products.ProductViewModel.giveBack(transaction.ID, amount);
-            transactions.Remove(transaction);
+            Products.ProductViewModel p = new Products.ProductViewModel();
+
+            p.giveBack(transaction.ID, amount);
+            transactions.remove(transaction);
         }
 
         #endregion
