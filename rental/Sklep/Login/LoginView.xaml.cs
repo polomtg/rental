@@ -30,10 +30,10 @@ namespace Sklep.Login
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
             if (LoginTxt.Text != null && LoginTxt.Text != "")
-                _email = LoginTxt.Text;
+                //_email = LoginTxt.Text;
 
             if (PassBox.Password != null && PassBox.Password != "")
-                _password = PassBox.Password;
+                //_password = PassBox.Password;
             
             DialogResult = true;
         }
