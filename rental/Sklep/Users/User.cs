@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,6 +60,8 @@ namespace Sklep.Users
                 RisePropertyChanged("rolaE");
             }
         }
+
+        public IEnumerable<DataRow> Rows { get; internal set; }
 
         #endregion
 

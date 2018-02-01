@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Sklep"
         xmlns:login="clr-namespace:Sklep.Login"
         mc:Ignorable="d"
-        Title="Okno logowania" Height="400" Width="650" Closing="Window_Closing">
+        Title="Okno logowania" Height="260" Width="300" Closing="Window_Closing">
 
     <Grid>
         <login:Login x:Name="OknoLogowania"/>

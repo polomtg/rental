@@ -13,12 +13,28 @@
 
     <Border Padding="10">
         <StackPanel>
-            <TextBlock Margin="10" TextWrapping="Wrap" Text="Proszę się zalogować"/>
-            <TextBlock Margin="10" TextWrapping="Wrap" Text="e-mail"/>
-            <TextBox x:Name="LogName" Margin="10" Height="23" TextWrapping="Wrap" Text="TextBox"/>
-            <TextBlock Margin="10" TextWrapping="Wrap" Text="Password"/>
-            <PasswordBox x:Name="PassName" Margin="10" />
-            <Button Margin="10" Content="Login" Command="{Binding SendTryLogin, Mode=OneWay, Source={StaticResource Login}}"  />
+            <Grid>
+                <TextBlock Margin="10" TextWrapping="Wrap" Text="Proszę się zalogować (np. nobody@gmail.pl)"/>
+            </Grid>
+            <Grid Margin="0 0 0 10">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="10" TextWrapping="Wrap" Text="e-mail" Grid.Column="0"/>
+                <TextBox x:Name="LogName" Margin="10" Height="23" TextWrapping="Wrap" Text="{Binding LoginName}" Grid.Column="1"></TextBox>
+            </Grid>
+            <Grid Margin="0 0 0 10">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="10" TextWrapping="Wrap" Text="Password" Grid.Column="0"/>
+                <PasswordBox x:Name="PassName" Margin="10" Grid.Column="1"/>
+            </Grid>
+            <Grid  Margin="100 0 0 10">
+                <Button x:Name="LoginBtn" Margin="10,10,6.5,10" Content="Login" Click="LoginBtn_Click" Command="{Binding SendTryLogin, Mode=OneWay, Source={StaticResource Login}}"  />
+            </Grid>
 
 
         </StackPanel>

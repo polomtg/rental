@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,15 @@ namespace Sklep.Users
 
         public UserViewModel()
         {
+        }
+
+        public bool CheckUser(string LoginName)
+        {
+            if ( users.returnEmail(LoginName))
+            {
+                return true;
+            }
+            return false;
         }
       
         public void LoadUsers()

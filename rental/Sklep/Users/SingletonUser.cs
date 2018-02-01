@@ -67,5 +67,23 @@ namespace Sklep.Users
                  }
              }
         }
+
+        public bool returnEmail(string LoginName)
+        {
+            DataSet ds = sqlUpdate.getData();
+
+            foreach (DataTable table in ds.Tables)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    string email = Convert.ToString(row[1]);
+                    if (email == LoginName)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
 }
